@@ -1,6 +1,6 @@
-﻿namespace PrisonSys
+﻿namespace PrisonSys.Forms
 {
-    partial class Form1
+    partial class Prisoner_History
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Prisoner_History
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "Prisoner_History";
+            this.Text = "Prisoner History";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-

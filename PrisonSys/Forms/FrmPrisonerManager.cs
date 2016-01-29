@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PrisonSys
+namespace PrisonSys.Forms
 {
-    public partial class Form1 : Form
+    public partial class Manage_Prisoners : Form
     {
-        public Form1()
+        public Manage_Prisoners()
         {
             InitializeComponent();
         }
