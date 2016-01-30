@@ -16,5 +16,16 @@ namespace PrisonSys.Forms
         {
             InitializeComponent();
         }
+
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

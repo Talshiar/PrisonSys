@@ -33,12 +33,10 @@
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.addPrisonerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managePrisonersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageCellsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prisonerHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cellStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +44,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.employeeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +66,6 @@
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addPrisonerToolStripMenuItem,
             this.managePrisonersToolStripMenuItem,
-            this.manageCellsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
@@ -86,12 +84,7 @@
             this.managePrisonersToolStripMenuItem.Name = "managePrisonersToolStripMenuItem";
             this.managePrisonersToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.managePrisonersToolStripMenuItem.Text = "Manage &Prisoners";
-            // 
-            // manageCellsToolStripMenuItem
-            // 
-            this.manageCellsToolStripMenuItem.Name = "manageCellsToolStripMenuItem";
-            this.manageCellsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.manageCellsToolStripMenuItem.Text = "Manage &Cells";
+            this.managePrisonersToolStripMenuItem.Click += new System.EventHandler(this.managePrisonersToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -104,8 +97,7 @@
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prisonerHistoryToolStripMenuItem,
-            this.cellStatusToolStripMenuItem,
-            this.employeeListToolStripMenuItem});
+            this.cellStatusToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "&View";
@@ -115,25 +107,22 @@
             this.prisonerHistoryToolStripMenuItem.Name = "prisonerHistoryToolStripMenuItem";
             this.prisonerHistoryToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.prisonerHistoryToolStripMenuItem.Text = "&Prisoner History";
+            this.prisonerHistoryToolStripMenuItem.Click += new System.EventHandler(this.prisonerHistoryToolStripMenuItem_Click);
             // 
             // cellStatusToolStripMenuItem
             // 
             this.cellStatusToolStripMenuItem.Name = "cellStatusToolStripMenuItem";
             this.cellStatusToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.cellStatusToolStripMenuItem.Text = "&Cell Status";
-            // 
-            // employeeListToolStripMenuItem
-            // 
-            this.employeeListToolStripMenuItem.Name = "employeeListToolStripMenuItem";
-            this.employeeListToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.employeeListToolStripMenuItem.Text = "&Employee List";
+            this.cellStatusToolStripMenuItem.Click += new System.EventHandler(this.cellStatusToolStripMenuItem_Click);
             // 
             // resourcesToolStripMenuItem
             // 
             this.resourcesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageToolStripMenuItem,
             this.manageToolStripMenuItem1,
-            this.manageToolStripMenuItem2});
+            this.manageToolStripMenuItem2,
+            this.employeeListToolStripMenuItem});
             this.resourcesToolStripMenuItem.Name = "resourcesToolStripMenuItem";
             this.resourcesToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.resourcesToolStripMenuItem.Text = "&Resources";
@@ -143,18 +132,21 @@
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.manageToolStripMenuItem.Text = "Manage &Cellblock Types";
+            this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem1
             // 
             this.manageToolStripMenuItem1.Name = "manageToolStripMenuItem1";
             this.manageToolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
             this.manageToolStripMenuItem1.Text = "Manage &Assignment Types";
+            this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click);
             // 
             // manageToolStripMenuItem2
             // 
             this.manageToolStripMenuItem2.Name = "manageToolStripMenuItem2";
             this.manageToolStripMenuItem2.Size = new System.Drawing.Size(217, 22);
             this.manageToolStripMenuItem2.Text = "Manage &Supervisors";
+            this.manageToolStripMenuItem2.Click += new System.EventHandler(this.manageToolStripMenuItem2_Click);
             // 
             // statusStrip
             // 
@@ -171,7 +163,14 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // PrisonSysMDI
+            // employeeListToolStripMenuItem
+            // 
+            this.employeeListToolStripMenuItem.Name = "employeeListToolStripMenuItem";
+            this.employeeListToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.employeeListToolStripMenuItem.Text = "&Employee List";
+            this.employeeListToolStripMenuItem.Click += new System.EventHandler(this.employeeListToolStripMenuItem_Click_1);
+            // 
+            // FrmPrisonSysMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,7 +179,7 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "PrisonSysMDI";
+            this.Name = "FrmPrisonSysMDI";
             this.Text = "PrisonSysMDI";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -204,12 +203,11 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prisonerHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cellStatusToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageCellsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem employeeListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resourcesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem employeeListToolStripMenuItem;
     }
 }
 

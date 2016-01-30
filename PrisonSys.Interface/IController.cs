@@ -11,7 +11,6 @@ namespace PrisonSys.Interface
         void ShowAddPrisoner();
         void ShowAssignmentTypeManager();
         void ShowCellblockTypeManager();
-        void ShowCellManager();
         void ShowCellPicker();
         void ShowCellStatus();
         void ShowEmployees();
