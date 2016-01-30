@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys
 {
-    partial class PrisonSysMDI
+    partial class FrmPrisonSysMDI
     {
         /// <summary>
         /// Required designer variable.
@@ -79,6 +79,7 @@
             this.addPrisonerToolStripMenuItem.Name = "addPrisonerToolStripMenuItem";
             this.addPrisonerToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.addPrisonerToolStripMenuItem.Text = "&Add Prisoner";
+            this.addPrisonerToolStripMenuItem.Click += new System.EventHandler(this.addPrisonerToolStripMenuItem_Click);
             // 
             // managePrisonersToolStripMenuItem
             // 
@@ -97,6 +98,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 

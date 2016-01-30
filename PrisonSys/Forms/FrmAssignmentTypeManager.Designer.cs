@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys.Forms
 {
-    partial class Assignment_Type_Manager
+    partial class FrmAssignmentTypeManager
     {
         /// <summary>
         /// Required designer variable.

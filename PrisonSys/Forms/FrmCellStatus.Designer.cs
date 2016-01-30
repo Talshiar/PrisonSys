@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys.Forms
 {
-    partial class Cell_Status
+    partial class FrmCellStatus
     {
         /// <summary>
         /// Required designer variable.

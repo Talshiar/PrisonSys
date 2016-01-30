@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PrisonSys.View")]
+[assembly: AssemblyTitle("PrisonSys.Main")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PrisonSys.View")]
+[assembly: AssemblyProduct("PrisonSys.Main")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9c35eb8f-3461-4519-993e-7eabd9123bc4")]
+[assembly: Guid("435fbece-cf3b-4d64-a32c-52cd6a58daa5")]
 
 // Version information for an assembly consists of the following four values:
 //

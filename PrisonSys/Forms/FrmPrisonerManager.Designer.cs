@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys.Forms
 {
-    partial class Manage_Prisoners
+    partial class FrmPrisonerManager
     {
         /// <summary>
         /// Required designer variable.

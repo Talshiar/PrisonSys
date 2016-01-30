@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PrisonSys.Forms
 {
-    public partial class Cellblock_Type_Manager : Form
+    public partial class FrmCellblockTypeManager : Form
     {
-        public Cellblock_Type_Manager()
+        public FrmCellblockTypeManager()
         {
             InitializeComponent();
         }

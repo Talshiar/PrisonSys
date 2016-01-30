@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys.Forms
 {
-    partial class Cellblock_Type_Manager
+    partial class FrmCellblockTypeManager
     {
         /// <summary>
         /// Required designer variable.

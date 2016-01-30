@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PrisonSys.Forms
 {
-    public partial class Supervisor_Manager : Form
+    public partial class FrmSupervisorManager : Form
     {
-        public Supervisor_Manager()
+        public FrmSupervisorManager()
         {
             InitializeComponent();
         }

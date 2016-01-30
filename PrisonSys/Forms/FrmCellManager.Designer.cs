@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys.Forms
 {
-    partial class Manage_Cells
+    partial class FrmCellManager
     {
         /// <summary>
         /// Required designer variable.

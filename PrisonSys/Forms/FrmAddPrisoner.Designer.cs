@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys
 {
-    partial class AddPrisoner
+    partial class FrmAddPrisoner
     {
         /// <summary>
         /// Required designer variable.

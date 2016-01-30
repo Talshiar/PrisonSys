@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PrisonSys.Forms
 {
-    public partial class Manage_Prisoners : Form
+    public partial class FrmPrisonerManager : Form
     {
-        public Manage_Prisoners()
+        public FrmPrisonerManager()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace PrisonSys.Forms
 {
-    partial class Supervisor_Manager
+    partial class FrmSupervisorManager
     {
         /// <summary>
         /// Required designer variable.
