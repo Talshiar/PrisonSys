@@ -28,7 +28,7 @@ namespace PrisonSys.DAL
         {
             using (ISession session = NhibernateSession.OpenSession())
             {
-                IQuery query = session.CreateQuery("from prisoner as ws order by ws.name asc");
+                IQuery query = session.CreateQuery("from PrisonSys.Model.Prisoner as ws order by ws.FirstName asc");
                 prisonerList = query.List<Prisoner>();
             }
         }
