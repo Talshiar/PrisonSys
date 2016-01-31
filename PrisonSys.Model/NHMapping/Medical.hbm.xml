@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PrisonSys.Model" namespace="PrisonSys.Model">
+  <class name="PrisonSys.Model.Medical, PrisonSys.Model" table="medical" lazy="false">
+    <id name="Id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="Description" column="description"/>
+    <property name="Date" column="date"/>
+    <many-to-one name="PrisonerExamined" class="PrisonSys.Model.Prisoner, PrisonSys.Model" column="id_prisoner"/>
+  </class>
+</hibernate-mapping>

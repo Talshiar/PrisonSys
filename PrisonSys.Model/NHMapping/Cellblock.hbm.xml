@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PrisonSys.Model" namespace="PrisonSys.Model">
+  <class name="PrisonSys.Model.Cellblock, PrisonSys.Model" table="cellblock" lazy="false">
+    <id name="Id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="Name" column="name"/>
+  </class>
+</hibernate-mapping>

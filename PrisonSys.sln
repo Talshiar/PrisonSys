@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.Main", "PrisonSys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.Model", "PrisonSys.Model\PrisonSys.Model.csproj", "{16A23D06-6527-4C4D-BDEC-FBC073A01A16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.DAL", "PrisonSys.DAL\PrisonSys.DAL.csproj", "{6D0BC080-822B-441A-B414-9B8D812C228F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{16A23D06-6527-4C4D-BDEC-FBC073A01A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A23D06-6527-4C4D-BDEC-FBC073A01A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A23D06-6527-4C4D-BDEC-FBC073A01A16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0BC080-822B-441A-B414-9B8D812C228F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0BC080-822B-441A-B414-9B8D812C228F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0BC080-822B-441A-B414-9B8D812C228F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0BC080-822B-441A-B414-9B8D812C228F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

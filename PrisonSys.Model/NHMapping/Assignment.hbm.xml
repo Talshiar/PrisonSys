@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PrisonSys.Model" namespace="PrisonSys.Model">
+  <class name="PrisonSys.Model.Assignment, PrisonSys.Model" table="assignment" lazy="false">
+    <id name="Id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="Name" column="name"/>
+    <one-to-one name="AssignmentSupervisor" class="PrisonSys.Model.Supervisor, PrisonSys.Model" column="id_supervisor"/>
+  </class>
+</hibernate-mapping>

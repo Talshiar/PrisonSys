@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PrisonSys.Model" namespace="PrisonSys.Model">
+  <class name="PrisonSys.Model.Prisoner, PrisonSys.Model" table="prisoner" lazy="false">
+    <id name="Id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="FirstName" column="name"/>
+    <property name="lastName" column="last_name"/>
+    <property name="Adress" column="adress"/>
+    <property name="ServeFrom" column="date_from"/>
+    <property name="ServeTo" column="date_to"/>
+    <property name="ServeReason" column="sentence_reason"/>
+    <many-to-one name="PrisonerAssignment" class="PrisonSys.Model.Assignment, PrisonSys.Model" column="id_assign"/>
+    <many-to-one name="PrisonerCell" class="PrisonSys.Model.Cell, PrisonSys.Model" column="id_cell"/>
+  </class>
+
+</hibernate-mapping>

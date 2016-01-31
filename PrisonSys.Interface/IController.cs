@@ -8,6 +8,7 @@ namespace PrisonSys.Interface
 {
     public interface IController
     {
+        #region Form calling methods
         void ShowAddPrisoner();
         void ShowAssignmentTypeManager();
         void ShowCellblockTypeManager();
@@ -16,7 +17,8 @@ namespace PrisonSys.Interface
         void ShowEmployees();
         void ShowPrisonerHistory();
         void ShowPrisonerManager();
-        void ShowSupervisorManager();
+        void ShowSupervisorManager(); 
+        #endregion
 
     }
 }

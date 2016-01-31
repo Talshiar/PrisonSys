@@ -167,9 +167,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PrisonSys.DAL\PrisonSys.DAL.csproj">
+      <Project>{6d0bc080-822b-441a-b414-9b8d812c228f}</Project>
+      <Name>PrisonSys.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrisonSys.Interface\PrisonSys.Interface.csproj">
       <Project>{e4eb6064-1065-4630-a953-dad51bced334}</Project>
       <Name>PrisonSys.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrisonSys.Model\PrisonSys.Model.csproj">
+      <Project>{16a23d06-6527-4c4d-bdec-fbc073a01a16}</Project>
+      <Name>PrisonSys.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
