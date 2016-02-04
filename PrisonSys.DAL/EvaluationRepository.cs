@@ -26,7 +26,7 @@ namespace PrisonSys.DAL
 
         private void LoadEvaluationsFromDatabase()
         {
-            using (ISession nhSession = NhibernateSession.OpenSession())
+            using (ISession nhSession = NhibernateService.OpenSession())
             {
 
             }

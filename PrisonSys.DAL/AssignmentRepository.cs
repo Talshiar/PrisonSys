@@ -10,75 +10,76 @@ using PrisonSys.Interface;
 
 namespace PrisonSys.DAL
 {
-    public class CellRepository : Subject, ICellRepository
+    public class AssignmentRepository : Subject, IAssignmentRepository
     {
-        private static CellRepository instance = null;
-        private IList<Cell> cellList = new List<Cell>();
-
-        public static CellRepository GetInstance()
+        private static AssignmentRepository instance = null;
+        private IList<Assignment> assignmentList = new List<Assignment>();
+        public static AssignmentRepository GetInstance()
         {
             if (instance == null)
             {
-                instance = new CellRepository();
+                instance = new AssignmentRepository();
             }
 
             return instance;
         }
-        private void LoadCellsFromDatabase()
+        private void LoadAssignmentsFromDatabase()
         {
             using (ISession session = NhibernateService.OpenSession())
             {
                 IQuery query = session.CreateQuery(
-                    "from PrisonSys.Model.Cell as c order by c.Id asc");
-                cellList = query.List<Cell>();
+                    "from PrisonSys.Model.Assignment as a order by a.Id asc");
+                assignmentList = query.List<Assignment>();
             }
         }
         public int Count()
         {
-            LoadCellsFromDatabase();
-            return cellList.Count;
+            LoadAssignmentsFromDatabase();
+            return assignmentList.Count;
         }
-        public void Add(int maxPop, int pop, Cellblock cellblock)
+        public void Add(string name, Supervisor superv)
         {
-            LoadCellsFromDatabase();
-            Cell cell = new Cell(maxPop, pop, cellblock);
+            LoadAssignmentsFromDatabase();
+            Assignment assignment = new Assignment(name, superv);
 
             using (ISession session = NhibernateService.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Save(cell);
+                    session.Save(assignment);
                     transaction.Commit();
                 }
             }
-            LoadCellsFromDatabase();
+            LoadAssignmentsFromDatabase();
             Notify();
         }
-        public void Update(int id, Model.Cell c)
+
+        public void Update(int id, Assignment assign)
         {
             throw new NotImplementedException();
         }
 
         public void Delete(int id)
         {
-            Cell cell = GetCellByIndex(id);
+            Assignment assignment = GetAssignmentByIndex(id);
 
             using (ISession session = NhibernateService.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Delete(cell);
+                    session.Delete(assignment);
                     transaction.Commit();
                 }
             }
-            LoadCellsFromDatabase();
+            LoadAssignmentsFromDatabase();
             Notify();
         }
-        public Cell GetCellByIndex(int index)
+
+        public Assignment GetAssignmentByIndex(int index)
         {
-            LoadCellsFromDatabase();
-            if (0 <= index && index <= cellList.Count)
-                return cellList[index];
+            LoadAssignmentsFromDatabase();
+            if (0 <= index && index <= assignmentList.Count)
+                return assignmentList[index];
             else
                 throw new Exception();
         }

@@ -13,7 +13,7 @@ using PrisonSys.Model;
 
 namespace PrisonSys.Forms
 {
-    public partial class FrmPrisonerManager : Form
+    public partial class FrmPrisonerManager : Form, IObserver
     {
         private IController controller;
         private PrisonerRepository prisonerRepo;
@@ -26,16 +26,27 @@ namespace PrisonSys.Forms
         private void UpdateList()
         {
             listPrisoner.Items.Clear();
-
             for (int i = 0; i < prisonerRepo.Count(); i++)
             {
                 Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(i);
-
                 ListViewItem listViewItem = new ListViewItem(prisoner.Id.ToString());
                 listViewItem.SubItems.Add(prisoner.FirstName);
                 listViewItem.SubItems.Add(prisoner.LastName);
                 listViewItem.SubItems.Add(prisoner.Adress);
+                listViewItem.SubItems.Add(prisoner.ServeFrom.ToString());
+                listViewItem.SubItems.Add(prisoner.ServeTo.ToString());
+                listPrisoner.Items.Add(listViewItem);
+            }       
+        }
+        private void UpdateList(List<Prisoner> prisoners)
+        {
+            listPrisoner.Items.Clear();
+            foreach (Prisoner prisoner in prisoners)
+            {
+                ListViewItem listViewItem = new ListViewItem(prisoner.Id.ToString());
+                listViewItem.SubItems.Add(prisoner.FirstName);
                 listViewItem.SubItems.Add(prisoner.LastName);
+                listViewItem.SubItems.Add(prisoner.Adress);
                 listViewItem.SubItems.Add(prisoner.ServeFrom.ToString());
                 listViewItem.SubItems.Add(prisoner.ServeTo.ToString());
                 listPrisoner.Items.Add(listViewItem);
@@ -45,6 +56,53 @@ namespace PrisonSys.Forms
         private void FrmPrisonerManager_Load(object sender, EventArgs e)
         {
             UpdateList();
+        }
+
+        private void listPrisoner_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listPrisoner.SelectedIndices.Count > 0)
+            {
+                string index = listPrisoner.SelectedItems[0].Text;
+                Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(Int32.Parse(index) - 1);
+                if (prisoner.ServeReason != null) txtBoxSentence.Text = prisoner.ServeReason;
+                if (prisoner.PrisonerAssignment != null) txtBoxAssign.Text = prisoner.PrisonerAssignment.Name;
+            }
+
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string firstName = txtBoxSearchName.Text.ToLower();
+            string lastName = txtBoxSearchLastName.Text.ToLower();
+            List<Prisoner> prisoners = prisonerRepo.GetByName(firstName, lastName);
+            if (prisoners.Count == 0)
+            {
+                MessageBox.Show("No results were found.");
+                UpdateList();
+                ClearFormControls();
+            }
+            else
+            {
+                UpdateList(prisoners);
+                ClearFormControls();
+            }
+        }
+
+        public void ClearFormControls()
+        {
+            txtBoxSearchLastName.ResetText();
+            txtBoxSearchName.ResetText();
+            txtBoxSentence.ResetText();
+            txtBoxAssign.ResetText();
+        }
+        void IObserver.UpdateView()
+        {
+            UpdateList();
+        }
+
+        private void btnRelease_Click(object sender, EventArgs e)
+        {
+            string index = listPrisoner.SelectedItems[0].Text;
+            prisonerRepo.Delete(Int32.Parse(index) - 1);
         }
     }
 }

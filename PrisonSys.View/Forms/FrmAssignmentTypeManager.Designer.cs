@@ -80,6 +80,7 @@
             this.ClientSize = new System.Drawing.Size(334, 262);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAssignmentTypeManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Assignment Type Manager";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

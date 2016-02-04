@@ -7,9 +7,9 @@ using NHibernate;
 using NHibernate.Cfg;
 using System.Reflection;
 
-namespace PrisonSys.Model
+namespace PrisonSys.DAL
 {
-    public static class NhibernateSession
+    public static class NhibernateService
     {
         public static ISession OpenSession()
         {

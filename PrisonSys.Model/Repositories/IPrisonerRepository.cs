@@ -11,7 +11,8 @@ namespace PrisonSys.Model.Repositories
         void Add(string fName, string lName, string adr, DateTime from, DateTime to, string reason);
         void Update(int id, Prisoner pris);
         void Delete(int id);
-        Prisoner Get(int id);
-        Prisoner GetByName(string fName, string lName);
+        Prisoner GetPrisonerByIndex(int index);
+        List<Prisoner> GetByName(string fName, string lName);
+
     }
 }

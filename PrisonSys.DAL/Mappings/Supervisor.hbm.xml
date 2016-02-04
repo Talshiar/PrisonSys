@@ -5,6 +5,6 @@
       <generator class="native"/>
     </id>
     <property name="FirstName" column="name"/>
-    <property name="lastName" column="last_name"/>
+    <property name="LastName" column="last_name"/>
   </class>
 </hibernate-mapping>

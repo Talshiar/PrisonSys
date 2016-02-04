@@ -8,30 +8,56 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PrisonSys.Interface;
-
+using PrisonSys.DAL;
+using PrisonSys.Model;
 
 namespace PrisonSys
 {
     public partial class FrmAddPrisoner : Form
     {
         private IController controller;
-        public FrmAddPrisoner(IController con)
+        private AssignmentRepository assignRepo;
+        private PrisonerRepository prisonerRepo;
+        public FrmAddPrisoner(IController con, AssignmentRepository repo1, PrisonerRepository repo2)
         {
             controller = con;
+            assignRepo = repo1;
+            prisonerRepo = repo2;
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e)
         {
-            controller.ShowCellPicker();
-            this.Close();
+            if (txtBoxAdress.Text != "" && txtBoxFName.Text != "" && txtBoxLName.Text != ""
+                && txtBoxSentenced.Text != "" && comboBoxAssign.SelectedItem != null
+                && dateTimeServeTo.Value > dateTimeServeFrom.Value)
+            {
+                prisonerRepo.Add(txtBoxFName.Text, txtBoxLName.Text, txtBoxAdress.Text,
+                    dateTimeServeFrom.Value.Date, dateTimeServeTo.Value.Date, txtBoxSentenced.Text);
+                //Prisoner newPrisoner = new Prisoner()
+                //{
+                //    FirstName = txtBoxFName.Text,
+                //    LastName = txtBoxLName.Text,
+                //    Adress = txtBoxAdress.Text,
+                //    ServeFrom = dateTimeServeFrom.Value.Date,
+                //    ServeTo = dateTimeServeTo.Value.Date,
+                //    ServeReason = txtBoxSentenced.Text
+                //};
+                controller.ShowCellPicker();
+            } else
+            {
+                MessageBox.Show("Not all information is fulfilled.\nPlease verify your input.");
+            }
+            
 
         }
 
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void FrmAddPrisoner_Load(object sender, EventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            for (int i = 0; i < assignRepo.Count(); i++ )
+            {
+                comboBoxAssign.Items.Add(assignRepo.GetAssignmentByIndex(i).Name);
+            }
         }
-
     }
 }

@@ -80,6 +80,7 @@
             this.ClientSize = new System.Drawing.Size(333, 263);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCellblockTypeManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cellblock Type Manager";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

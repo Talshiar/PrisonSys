@@ -26,7 +26,7 @@ namespace PrisonSys.DAL
 
         private void LoadMedicalsFromDatabase()
         {
-            using (ISession nhSession = NhibernateSession.OpenSession())
+            using (ISession nhSession = NhibernateService.OpenSession())
             {
 
             }

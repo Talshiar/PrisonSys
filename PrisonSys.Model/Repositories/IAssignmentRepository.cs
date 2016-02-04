@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PrisonSys.Model.Repositories
 {
-    public interface ICellRepository
+    public interface IAssignmentRepository
     {
-        void Add(int maxPop, int pop, Cellblock cellblock);
-        void Update(int id, Cell c);
+        void Add(string name, Supervisor superv);
+        void Update(int id, Assignment assign);
         void Delete(int id);
-        Cell GetCellByIndex(int index);
+        Assignment GetAssignmentByIndex(int index);
     }
 }

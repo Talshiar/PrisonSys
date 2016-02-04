@@ -80,6 +80,7 @@
             this.ClientSize = new System.Drawing.Size(329, 259);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmEmployees";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -5,6 +5,6 @@
       <generator class="native"/>
     </id>
     <property name="Name" column="name"/>
-    <one-to-one name="AssignmentSupervisor" class="PrisonSys.Model.Supervisor, PrisonSys.Model" column="id_supervisor"/>
+    <many-to-one name="AssignmentSupervisor" class="PrisonSys.Model.Supervisor, PrisonSys.Model" column="id_supervisor"/>
   </class>
 </hibernate-mapping>

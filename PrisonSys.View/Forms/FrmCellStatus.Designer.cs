@@ -30,12 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Cell_Status
+            // FrmCellStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "Cell_Status";
+            this.Name = "FrmCellStatus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cell Status";
             this.ResumeLayout(false);
 

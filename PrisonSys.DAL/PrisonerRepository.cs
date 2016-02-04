@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using PrisonSys.Model.Repositories;
 using PrisonSys.Model;
 using NHibernate;
+using PrisonSys.Interface;
 
 namespace PrisonSys.DAL
 {
-    public class PrisonerRepository : IPrisonerRepository
+    public class PrisonerRepository : Subject, IPrisonerRepository
     {
         private static PrisonerRepository instance = null;
         private IList<Prisoner> prisonerList = new List<Prisoner>();
@@ -26,9 +27,10 @@ namespace PrisonSys.DAL
 
         private void LoadPrisonersFromDatabase()
         {
-            using (ISession session = NhibernateSession.OpenSession())
+            using (ISession session = NhibernateService.OpenSession())
             {
-                IQuery query = session.CreateQuery("from PrisonSys.Model.Prisoner as ws order by ws.FirstName asc");
+                IQuery query = session.CreateQuery(
+                    "from PrisonSys.Model.Prisoner as p order by p.Id asc");
                 prisonerList = query.List<Prisoner>();
             }
         }
@@ -36,7 +38,6 @@ namespace PrisonSys.DAL
         public int Count()
         {
             LoadPrisonersFromDatabase();
-
             return prisonerList.Count;
         }
 
@@ -45,7 +46,7 @@ namespace PrisonSys.DAL
             LoadPrisonersFromDatabase();
             Prisoner prisoner = new Prisoner(fName, lName, adr, from, to, reason);
 
-            using (ISession session = NhibernateSession.OpenSession())
+            using (ISession session = NhibernateService.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
@@ -53,19 +54,17 @@ namespace PrisonSys.DAL
                     transaction.Commit();
                 }
             }
+            LoadPrisonersFromDatabase();
+            Notify();
         }
         public Prisoner GetPrisonerByIndex(int index)
         {
             LoadPrisonersFromDatabase();
 
             if (0 <= index && index <= prisonerList.Count)
-            {
                 return prisonerList[index];
-            }
             else
-            {
                 throw new Exception();
-            }
         }
 
         public void Update(int id, Model.Prisoner pris)
@@ -75,17 +74,37 @@ namespace PrisonSys.DAL
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Prisoner prisoner = GetPrisonerByIndex(id);
+
+            using (ISession session = NhibernateService.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Delete(prisoner);
+                    transaction.Commit();
+                }
+            }
+            LoadPrisonersFromDatabase();
+            Notify();
         }
 
-        public Model.Prisoner Get(int id)
+        public List<Prisoner> GetByName(string fName, string lName)
         {
-            throw new NotImplementedException();
-        }
+            LoadPrisonersFromDatabase();
+            List<Prisoner> prisoners = new List<Prisoner>();
+            foreach (Prisoner p in prisonerList)
+            {
+                if (fName != "" && lName != "")
+                {
+                    if (fName == p.FirstName.ToLower() && lName == p.LastName.ToLower())
+                        prisoners.Add(p);
+                }
+                else
+                    if (fName == p.FirstName.ToLower() || lName == p.LastName.ToLower())
+                        prisoners.Add(p);
 
-        public Model.Prisoner GetByName(string fName, string lName)
-        {
-            throw new NotImplementedException();
+            }
+            return prisoners;
         }
     }
 }

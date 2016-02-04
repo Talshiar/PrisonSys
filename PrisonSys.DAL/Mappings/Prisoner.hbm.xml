@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PrisonSys.Model" namespace="PrisonSys.Model" auto-import="false">
-  <class name="PrisonSys.Model.Prisoner" table="prisoner" lazy="false">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PrisonSys.Model" namespace="PrisonSys.Model">
+  <class name="PrisonSys.Model.Prisoner, PrisonSys.Model" table="prisoner" lazy="false">
     <id name="Id" column="id">
       <generator class="native"/>
     </id>
     <property name="FirstName" column="name"/>
-    <property name="lastName" column="last_name"/>
+    <property name="LastName" column="last_name"/>
     <property name="Adress" column="adress"/>
     <property name="ServeFrom" column="date_from"/>
     <property name="ServeTo" column="date_to"/>
