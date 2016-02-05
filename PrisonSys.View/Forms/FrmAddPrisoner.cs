@@ -33,30 +33,22 @@ namespace PrisonSys
                 && dateTimeServeTo.Value > dateTimeServeFrom.Value)
             {
                 prisonerRepo.Add(txtBoxFName.Text, txtBoxLName.Text, txtBoxAdress.Text,
-                    dateTimeServeFrom.Value.Date, dateTimeServeTo.Value.Date, txtBoxSentenced.Text);
-                //Prisoner newPrisoner = new Prisoner()
-                //{
-                //    FirstName = txtBoxFName.Text,
-                //    LastName = txtBoxLName.Text,
-                //    Adress = txtBoxAdress.Text,
-                //    ServeFrom = dateTimeServeFrom.Value.Date,
-                //    ServeTo = dateTimeServeTo.Value.Date,
-                //    ServeReason = txtBoxSentenced.Text
-                //};
-                controller.ShowCellPicker();
+                    dateTimeServeFrom.Value.Date, dateTimeServeTo.Value.Date, txtBoxSentenced.Text,
+                    assignRepo.GetAssignmentIdByName(comboBoxAssign.SelectedItem.ToString()), 0);
+                controller.ShowCellPicker(prisonerRepo.GetPrisonerId(txtBoxFName.Text, txtBoxLName.Text));
+                this.Close();
             } else
             {
                 MessageBox.Show("Not all information is fulfilled.\nPlease verify your input.");
             }
             
-
         }
 
         private void FrmAddPrisoner_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < assignRepo.Count(); i++ )
+            foreach(Assignment a in assignRepo.GetAssignmentList())
             {
-                comboBoxAssign.Items.Add(assignRepo.GetAssignmentByIndex(i).Name);
+                comboBoxAssign.Items.Add(a.Name);
             }
         }
     }

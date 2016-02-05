@@ -14,6 +14,7 @@ namespace PrisonSys.DAL
     {
         private static CellRepository instance = null;
         private IList<Cell> cellList = new List<Cell>();
+        private IList<Cellblock> cellblockList = new List<Cellblock>();
 
         public static CellRepository GetInstance()
         {
@@ -24,6 +25,7 @@ namespace PrisonSys.DAL
 
             return instance;
         }
+        #region Cell Methods
         private void LoadCellsFromDatabase()
         {
             using (ISession session = NhibernateService.OpenSession())
@@ -33,6 +35,7 @@ namespace PrisonSys.DAL
                 cellList = query.List<Cell>();
             }
         }
+
         public int Count()
         {
             LoadCellsFromDatabase();
@@ -54,12 +57,29 @@ namespace PrisonSys.DAL
             LoadCellsFromDatabase();
             Notify();
         }
-        public void Update(int id, Model.Cell c)
+        public void UpdateCellPop(int id, int change)
         {
-            throw new NotImplementedException();
+            LoadCellsFromDatabase();
+            foreach (Cell cell in cellList)
+            {
+                if (cell.Id == id)
+                {
+                    cell.Pop += change;
+                    using (ISession session = NhibernateService.OpenSession())
+                    {
+                        using (ITransaction transaction = session.BeginTransaction())
+                        {
+                            session.Update(cell);
+                            transaction.Commit();
+                        }
+                    }
+                    LoadCellsFromDatabase();
+                }
+            }
+            Notify();
         }
 
-        public void Delete(int id)
+        public void Remove(int id)
         {
             Cell cell = GetCellByIndex(id);
 
@@ -77,10 +97,74 @@ namespace PrisonSys.DAL
         public Cell GetCellByIndex(int index)
         {
             LoadCellsFromDatabase();
-            if (0 <= index && index <= cellList.Count)
-                return cellList[index];
-            else
-                throw new Exception();
+
+            foreach (Cell c in cellList)
+            {
+                if (c.Id == index) return c;
+            }
+            throw new Exception();
+        } 
+        #endregion
+        #region Cellblock methods
+        private void LoadCellblocksFromDatabase()
+        {
+            using (ISession session = NhibernateService.OpenSession())
+            {
+                IQuery query = session.CreateQuery(
+                    "from PrisonSys.Model.Cellblock as cb order by cb.Id asc");
+                cellblockList = query.List<Cellblock>();
+            }
         }
+        public List<Cellblock> GetCellBlockList()
+        {
+            LoadCellblocksFromDatabase();
+            List<Cellblock> blockList = cellblockList.ToList();
+            return blockList;
+        }
+        public Cellblock GetCellblockByIndex(int index)
+        {
+            LoadCellblocksFromDatabase();
+            foreach (Cellblock cb in cellblockList)
+            {
+                if (cb.Id == index) return cb;
+            }
+            throw new Exception();
+        }
+        public void DeleteCellblock(int id)
+        {
+            LoadCellsFromDatabase();
+            LoadCellblocksFromDatabase();
+            Cellblock cellblock = GetCellblockByIndex(id);
+            using (ISession session = NhibernateService.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Delete(cellblock);
+                    foreach (Cell c in cellList)
+                    {
+                        if (c.CellBlock.Id == cellblock.Id) session.Delete(c);
+                    }
+                    transaction.Commit();
+                }
+            }
+            LoadCellblocksFromDatabase();
+            Notify();
+        }
+        public void AddCellblock(string name)
+        {
+            LoadCellsFromDatabase();
+            Cellblock cb = new Cellblock(name);
+            using (ISession session = NhibernateService.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Save(cb);
+                    transaction.Commit();
+                }
+            }
+            LoadCellsFromDatabase();
+            Notify();
+        }
+        #endregion
     }
 }

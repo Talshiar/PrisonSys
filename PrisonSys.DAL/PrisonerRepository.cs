@@ -41,10 +41,27 @@ namespace PrisonSys.DAL
             return prisonerList.Count;
         }
 
-        public void Add(string fName, string lName, string adr, DateTime from, DateTime to, string reason)
+        public void Add(string fName, string lName, string adr, DateTime from,
+            DateTime to, string reason, int idAssign, int idCell)
         {
             LoadPrisonersFromDatabase();
             Prisoner prisoner = new Prisoner(fName, lName, adr, from, to, reason);
+
+            AssignmentRepository assignRepo = new AssignmentRepository();
+            Assignment assignment;
+            if (idAssign != 0)
+            {
+                assignment = assignRepo.GetAssignmentByIndex(idAssign - 1);
+                prisoner.PrisonerAssignment = assignment;
+            }
+            CellRepository cellRepo = new CellRepository();
+            Cell cell;
+            if (idCell != 0)
+            {
+                cell = cellRepo.GetCellByIndex(idCell);
+                prisoner.PrisonerCell = cell;
+            }
+
 
             using (ISession session = NhibernateService.OpenSession())
             {
@@ -61,23 +78,62 @@ namespace PrisonSys.DAL
         {
             LoadPrisonersFromDatabase();
 
-            if (0 <= index && index <= prisonerList.Count)
-                return prisonerList[index];
-            else
-                throw new Exception();
+            foreach (Prisoner p in prisonerList)
+            {
+                if (p.Id == index) return p;
+            }
+            throw new Exception();
         }
-
-        public void Update(int id, Model.Prisoner pris)
+        public List<Prisoner> GetPrisonerList()
         {
             LoadPrisonersFromDatabase();
+            List<Prisoner> prisoners = new List<Prisoner>();
+            foreach (Prisoner p in prisonerList)
+            {
+                prisoners.Add(p);
+            }
+            return prisoners;
         }
 
-        public void Delete(int id)
+        public void Update(int id, Model.Prisoner newPris)
         {
-            Prisoner prisoner = GetPrisonerByIndex(id);
+            LoadPrisonersFromDatabase();
 
+            foreach (Prisoner prisoner in prisonerList)
+            {
+                if (prisoner.Id == id)
+                {
+                    prisoner.FirstName = newPris.FirstName;
+                    prisoner.LastName = newPris.LastName;
+                    prisoner.Adress = newPris.Adress;
+                    prisoner.ServeFrom = newPris.ServeFrom;
+                    prisoner.ServeTo = newPris.ServeTo;
+                    prisoner.ServeReason = newPris.ServeReason;
+                    prisoner.PrisonerAssignment = newPris.PrisonerAssignment;
+                    prisoner.PrisonerCell = newPris.PrisonerCell;
+                    using (ISession session = NhibernateService.OpenSession())
+                    {
+                        using (ITransaction transaction = session.BeginTransaction())
+                        {
+                            session.Update(prisoner);
+                            transaction.Commit();
+                        }
+                    }
+
+                    LoadPrisonersFromDatabase();
+                }
+            }
+            Notify();
+        }
+
+        public void Remove(int id)
+        {
+            LoadPrisonersFromDatabase();
+            Prisoner prisoner = GetPrisonerByIndex(id);
+            CellRepository cellRepo = new CellRepository();
             using (ISession session = NhibernateService.OpenSession())
             {
+                cellRepo.UpdateCellPop(prisoner.PrisonerCell.Id, -1);
                 using (ITransaction transaction = session.BeginTransaction())
                 {
                     session.Delete(prisoner);
@@ -105,6 +161,15 @@ namespace PrisonSys.DAL
 
             }
             return prisoners;
+        }
+        public int GetPrisonerId(string fName, string lName)
+        {
+            Prisoner prisoner = new Prisoner();
+            foreach (Prisoner p in prisonerList)
+            {
+                if (p.FirstName == fName && p.LastName == lName) prisoner = p;
+            }
+            return prisoner.Id;
         }
     }
 }

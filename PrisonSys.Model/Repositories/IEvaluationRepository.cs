@@ -9,7 +9,9 @@ namespace PrisonSys.Model.Repositories
     public interface IEvaluationRepository
     {
         void Add(Evaluation eval);
-        void Delete(int id);
+        void Remove(int id);
         Evaluation Get(int id);
+        int Count();
+
     }
 }

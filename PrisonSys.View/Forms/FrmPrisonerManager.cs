@@ -26,9 +26,8 @@ namespace PrisonSys.Forms
         private void UpdateList()
         {
             listPrisoner.Items.Clear();
-            for (int i = 0; i < prisonerRepo.Count(); i++)
+            foreach (Prisoner prisoner in prisonerRepo.GetPrisonerList())
             {
-                Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(i);
                 ListViewItem listViewItem = new ListViewItem(prisoner.Id.ToString());
                 listViewItem.SubItems.Add(prisoner.FirstName);
                 listViewItem.SubItems.Add(prisoner.LastName);
@@ -63,7 +62,7 @@ namespace PrisonSys.Forms
             if (listPrisoner.SelectedIndices.Count > 0)
             {
                 string index = listPrisoner.SelectedItems[0].Text;
-                Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(Int32.Parse(index) - 1);
+                Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(Int32.Parse(index));
                 if (prisoner.ServeReason != null) txtBoxSentence.Text = prisoner.ServeReason;
                 if (prisoner.PrisonerAssignment != null) txtBoxAssign.Text = prisoner.PrisonerAssignment.Name;
             }
@@ -102,7 +101,16 @@ namespace PrisonSys.Forms
         private void btnRelease_Click(object sender, EventArgs e)
         {
             string index = listPrisoner.SelectedItems[0].Text;
-            prisonerRepo.Delete(Int32.Parse(index) - 1);
+            try
+            {
+                prisonerRepo.Remove(Int32.Parse(index));
+                MessageBox.Show("Prisoner successfully deleted.");
+                UpdateList();
+            }
+            catch
+            {
+                MessageBox.Show("Failed to delete the prisoner from the database.");
+            }
         }
     }
 }

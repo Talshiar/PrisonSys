@@ -10,7 +10,16 @@ namespace PrisonSys.Model.Repositories
     {
         void Add(string name, Supervisor superv);
         void Update(int id, Assignment assign);
-        void Delete(int id);
+        void Remove(int id);
+        int Count();
         Assignment GetAssignmentByIndex(int index);
+        int GetAssignmentIdByName(string name);
+        List<Assignment> GetAssignmentList();
+        int SupervisorCount();
+        Supervisor GetSupervisorByIndex(int index);
+        List<Supervisor> GetSupervisorList();
+        void RemoveSupervisor(int id);
+        void AddSupervisor(string fName, string lName);
+
     }
 }

@@ -17,26 +17,71 @@ namespace PrisonSys.Forms
     {
         private IController controller;
         private CellRepository cellRepo;
-        public FrmCellPicker(IController con, CellRepository repo)
+        private Cell cell;
+        private int idPrisoner;
+        public FrmCellPicker(IController con, CellRepository repo, int idPris)
         {
+            idPrisoner = idPris;
             controller = con;
             cellRepo = repo;
             InitializeComponent();
         }
 
-        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
-        {
-            groupBox1.Visible = true;
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnFinish_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (comboBoxAvaCells.SelectedItem == null)
+            {
+                MessageBox.Show("You didn't select a cell.");
+            } else
+            {
+                PrisonerRepository prisonerRepo = new PrisonerRepository();
+                Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(idPrisoner);
+                prisoner.PrisonerCell = cell;
+
+                cellRepo.UpdateCellPop(cell.Id, 1);
+                try
+                {
+                    prisonerRepo.Update(idPrisoner, prisoner);
+                    MessageBox.Show("Prisoner successfully added.");
+                }
+                catch
+                {
+                    MessageBox.Show("Error while adding prisoner to database.");
+                }
+                this.Close();
+            }
         }
 
         private void FrmCellPicker_Load(object sender, EventArgs e)
         {
+            foreach (Cellblock block in cellRepo.GetCellBlockList())
+            {
+                comboBoxCellBlock.Items.Add(block.Name);
+            }
+        }
 
+        private void comboBoxCellBlock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxAvaCells.Items.Clear();
+            groupBox1.Visible = false;
+            string cellBlockName = comboBoxCellBlock.SelectedItem.ToString();
+            for (int i = 0; i < cellRepo.Count(); i++)
+            {
+                cell = cellRepo.GetCellByIndex(i);
+                if (cell.CellBlock.Name == cellBlockName && cell.Pop < cell.MaxPop)
+                {
+                    comboBoxAvaCells.Items.Add(cell.Id);
+                }
+            }
+        }
+
+        private void comboBoxAvaCells_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            groupBox1.Visible = true;
+            cell = cellRepo.GetCellByIndex(Int32.Parse(comboBoxAvaCells.SelectedItem.ToString()) - 1);
+            txtBoxMaxPop.Text = cell.MaxPop.ToString();
+            txtBoxPopulation.Text = cell.Pop.ToString();
         }
 
     }

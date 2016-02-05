@@ -9,7 +9,9 @@ namespace PrisonSys.Model.Repositories
     public interface IMedicalRepository
     {
         void Add(Medical med);
-        void Delete(int id);
+        void Remove(int id);
         Medical Get(int id);
+        int Count();
+
     }
 }

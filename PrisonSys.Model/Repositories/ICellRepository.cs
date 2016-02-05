@@ -9,8 +9,14 @@ namespace PrisonSys.Model.Repositories
     public interface ICellRepository
     {
         void Add(int maxPop, int pop, Cellblock cellblock);
-        void Update(int id, Cell c);
-        void Delete(int id);
+        void UpdateCellPop(int id, int change);
+        void Remove(int id);
+        int Count();
+
         Cell GetCellByIndex(int index);
+        Cellblock GetCellblockByIndex(int index);
+        List<Cellblock> GetCellBlockList();
+        void DeleteCellblock(int id);
+        void AddCellblock(string name);
     }
 }

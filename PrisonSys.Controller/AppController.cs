@@ -27,19 +27,23 @@ namespace PrisonSys.Controller
 
         public void ShowAssignmentTypeManager()
         {
-            FrmAssignmentTypeManager AssignmentManager = new FrmAssignmentTypeManager();
+            FrmAssignmentTypeManager AssignmentManager = new FrmAssignmentTypeManager(this, assignmentRepository);
+            assignmentRepository.Attach(AssignmentManager);
             AssignmentManager.ShowDialog();
+            assignmentRepository.Delete(AssignmentManager);
         }
 
         public void ShowCellblockTypeManager()
         {
-            FrmCellblockTypeManager CellblockManager = new FrmCellblockTypeManager();
+            FrmCellblockTypeManager CellblockManager = new FrmCellblockTypeManager(this, cellRepository);
+            cellRepository.Attach(CellblockManager);
             CellblockManager.ShowDialog();
+            cellRepository.Delete(CellblockManager);
         }
 
-        public void ShowCellPicker()
+        public void ShowCellPicker(int idPrisoner)
         {
-            FrmCellPicker CellPicker = new FrmCellPicker(this, cellRepository);
+            FrmCellPicker CellPicker = new FrmCellPicker(this, cellRepository, idPrisoner);
             CellPicker.ShowDialog();
         }
 
@@ -47,6 +51,7 @@ namespace PrisonSys.Controller
         {
             FrmCellStatus CellStatus = new FrmCellStatus();
             CellStatus.ShowDialog();
+
         }
 
         public void ShowEmployees()
@@ -64,13 +69,29 @@ namespace PrisonSys.Controller
         public void ShowPrisonerManager()
         {
             FrmPrisonerManager PrisonerManager = new FrmPrisonerManager(this, prisonerRepository);
+            prisonerRepository.Attach(PrisonerManager);
             PrisonerManager.ShowDialog();
+            prisonerRepository.Delete(PrisonerManager);
         }
 
         public void ShowSupervisorManager()
         {
             FrmSupervisorManager SupervisorManager = new FrmSupervisorManager();
             SupervisorManager.ShowDialog();
+        }
+
+
+        public void ShowAddCellblock()
+        {
+            FrmAddCellblock AddCellblock = new FrmAddCellblock(this, cellRepository);
+            AddCellblock.ShowDialog();
+        }
+
+
+        public void ShowAddAssignment()
+        {
+            FrmAddAssignment AddAssignment = new FrmAddAssignment(this, assignmentRepository);
+            AddAssignment.ShowDialog();
         }
     }
 }

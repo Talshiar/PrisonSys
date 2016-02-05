@@ -36,12 +36,18 @@ namespace PrisonSys.DAL
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
+        public void Remove(int id)
         {
             throw new NotImplementedException();
         }
 
         public Model.Medical Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int Count()
         {
             throw new NotImplementedException();
         }

@@ -51,6 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FrmAddAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAddAssignment.Designer.cs">
+      <DependentUpon>FrmAddAssignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmAddCellblock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAddCellblock.Designer.cs">
+      <DependentUpon>FrmAddCellblock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmAddPrisoner.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +124,12 @@
       <DependentUpon>FrmSupervisorManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmAddAssignment.resx">
+      <DependentUpon>FrmAddAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAddCellblock.resx">
+      <DependentUpon>FrmAddCellblock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAddPrisoner.resx">
       <DependentUpon>FrmAddPrisoner.cs</DependentUpon>
     </EmbeddedResource>
