@@ -65,6 +65,11 @@ namespace PrisonSys.Forms
                 Prisoner prisoner = prisonerRepo.GetPrisonerByIndex(Int32.Parse(index));
                 if (prisoner.ServeReason != null) txtBoxSentence.Text = prisoner.ServeReason;
                 if (prisoner.PrisonerAssignment != null) txtBoxAssign.Text = prisoner.PrisonerAssignment.Name;
+                if (prisoner.PrisonerCell != null)
+                {
+                    textBoxCell.Text = prisoner.PrisonerCell.Id.ToString();
+                    textBoxCellblock.Text = prisoner.PrisonerCell.CellBlock.Name;
+                }
             }
 
         }
@@ -100,7 +105,14 @@ namespace PrisonSys.Forms
 
         private void btnRelease_Click(object sender, EventArgs e)
         {
-            string index = listPrisoner.SelectedItems[0].Text;
+            string index = "";
+            if (listPrisoner.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a prisoner first.");
+                return;
+            }
+            else
+                index = listPrisoner.SelectedItems[0].Text;
             try
             {
                 prisonerRepo.Remove(Int32.Parse(index));
@@ -110,6 +122,53 @@ namespace PrisonSys.Forms
             catch
             {
                 MessageBox.Show("Failed to delete the prisoner from the database.");
+            }
+        }
+
+        private void btnAssignment_Click(object sender, EventArgs e)
+        {
+            if (listPrisoner.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a prisoner first.");
+            }
+            else
+            {
+                int idPrisoner;
+                if (int.TryParse(listPrisoner.SelectedItems[0].Text, out idPrisoner) == false)
+                    return;
+                if (idPrisoner != 0) controller.ShowChangeAssignment(idPrisoner);
+            }
+
+
+        }
+
+        private void btnEvaluate_Click(object sender, EventArgs e)
+        {
+            if (listPrisoner.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a prisoner first.");
+            }
+            else
+            {
+                int idPrisoner;
+                if (int.TryParse(listPrisoner.SelectedItems[0].Text, out idPrisoner) == false)
+                    return;
+                if (idPrisoner != 0) controller.ShowEvaluations(idPrisoner);
+            }
+        }
+
+        private void btnMedical_Click(object sender, EventArgs e)
+        {
+            if (listPrisoner.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select a prisoner first.");
+            }
+            else
+            {
+                int idPrisoner;
+                if (int.TryParse(listPrisoner.SelectedItems[0].Text, out idPrisoner) == false)
+                    return;
+                if (idPrisoner != 0) controller.ShowMedicals(idPrisoner);
             }
         }
     }

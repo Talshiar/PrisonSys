@@ -66,9 +66,8 @@ namespace PrisonSys.Forms
             comboBoxAvaCells.Items.Clear();
             groupBox1.Visible = false;
             string cellBlockName = comboBoxCellBlock.SelectedItem.ToString();
-            for (int i = 0; i < cellRepo.Count(); i++)
+            foreach (Cell cell in cellRepo.GetCellList())
             {
-                cell = cellRepo.GetCellByIndex(i);
                 if (cell.CellBlock.Name == cellBlockName && cell.Pop < cell.MaxPop)
                 {
                     comboBoxAvaCells.Items.Add(cell.Id);
@@ -79,7 +78,7 @@ namespace PrisonSys.Forms
         private void comboBoxAvaCells_SelectionChangeCommitted(object sender, EventArgs e)
         {
             groupBox1.Visible = true;
-            cell = cellRepo.GetCellByIndex(Int32.Parse(comboBoxAvaCells.SelectedItem.ToString()) - 1);
+            cell = cellRepo.GetCellByIndex(Int32.Parse(comboBoxAvaCells.SelectedItem.ToString()));
             txtBoxMaxPop.Text = cell.MaxPop.ToString();
             txtBoxPopulation.Text = cell.Pop.ToString();
         }

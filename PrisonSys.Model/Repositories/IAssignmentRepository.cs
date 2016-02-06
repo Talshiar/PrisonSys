@@ -8,18 +8,23 @@ namespace PrisonSys.Model.Repositories
 {
     public interface IAssignmentRepository
     {
+        #region Assignment methods
         void Add(string name, Supervisor superv);
         void Update(int id, Assignment assign);
         void Remove(int id);
         int Count();
         Assignment GetAssignmentByIndex(int index);
         int GetAssignmentIdByName(string name);
-        List<Assignment> GetAssignmentList();
+        List<Assignment> GetAssignmentList(); 
+        #endregion
+
+        #region Supervisor methods
         int SupervisorCount();
         Supervisor GetSupervisorByIndex(int index);
         List<Supervisor> GetSupervisorList();
         void RemoveSupervisor(int id);
-        void AddSupervisor(string fName, string lName);
+        void AddSupervisor(string fName, string lName); 
+        #endregion
 
     }
 }

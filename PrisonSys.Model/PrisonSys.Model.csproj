@@ -82,8 +82,6 @@
     <Compile Include="Domain\Supervisor.cs" />
     <Compile Include="Repositories\IAssignmentRepository.cs" />
     <Compile Include="Repositories\ICellRepository.cs" />
-    <Compile Include="Repositories\IEvaluationRepository.cs" />
-    <Compile Include="Repositories\IMedicalRepository.cs" />
     <Compile Include="Repositories\IPrisonerRepository.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

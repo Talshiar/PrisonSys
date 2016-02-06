@@ -13,13 +13,15 @@ namespace PrisonSys.Interface
         void ShowAssignmentTypeManager();
         void ShowCellblockTypeManager();
         void ShowCellPicker(int idPrisoner);
-        void ShowCellStatus();
-        void ShowEmployees();
-        void ShowPrisonerHistory();
         void ShowPrisonerManager();
         void ShowSupervisorManager();
         void ShowAddCellblock();
         void ShowAddAssignment();
+        void ShowAddSupervisor();
+        void ShowMedicals(int idPrisoner);
+        void ShowEvaluations(int idPrisoner);
+        void ShowChangeAssignment(int idPrisoner);
+
         #endregion
 
     }

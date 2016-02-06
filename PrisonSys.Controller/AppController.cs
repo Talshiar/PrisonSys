@@ -14,8 +14,6 @@ namespace PrisonSys.Controller
     public class AppController : IController
     {
         readonly PrisonerRepository prisonerRepository = PrisonerRepository.GetInstance();
-        readonly MedicalRepository medicalRepository = MedicalRepository.GetInstance();
-        readonly EvaluationRepository evaluationRepository = EvaluationRepository.GetInstance();
         readonly CellRepository cellRepository = CellRepository.GetInstance();
         readonly AssignmentRepository assignmentRepository = AssignmentRepository.GetInstance();
 
@@ -47,25 +45,6 @@ namespace PrisonSys.Controller
             CellPicker.ShowDialog();
         }
 
-        public void ShowCellStatus()
-        {
-            FrmCellStatus CellStatus = new FrmCellStatus();
-            CellStatus.ShowDialog();
-
-        }
-
-        public void ShowEmployees()
-        {
-            FrmEmployees Employees = new FrmEmployees();
-            Employees.ShowDialog();
-        }
-
-        public void ShowPrisonerHistory()
-        {
-            FrmPrisonerHistory PrisonerHistory = new FrmPrisonerHistory();
-            PrisonerHistory.ShowDialog();
-        }
-
         public void ShowPrisonerManager()
         {
             FrmPrisonerManager PrisonerManager = new FrmPrisonerManager(this, prisonerRepository);
@@ -76,10 +55,11 @@ namespace PrisonSys.Controller
 
         public void ShowSupervisorManager()
         {
-            FrmSupervisorManager SupervisorManager = new FrmSupervisorManager();
+            FrmSupervisorManager SupervisorManager = new FrmSupervisorManager(this, assignmentRepository);
+            assignmentRepository.Attach(SupervisorManager);
             SupervisorManager.ShowDialog();
+            assignmentRepository.Delete(SupervisorManager);
         }
-
 
         public void ShowAddCellblock()
         {
@@ -87,11 +67,38 @@ namespace PrisonSys.Controller
             AddCellblock.ShowDialog();
         }
 
-
         public void ShowAddAssignment()
         {
             FrmAddAssignment AddAssignment = new FrmAddAssignment(this, assignmentRepository);
             AddAssignment.ShowDialog();
+        }
+
+        public void ShowAddSupervisor()
+        {
+            FrmAddSupervisor AddSupervisor = new FrmAddSupervisor(this, assignmentRepository);
+            AddSupervisor.ShowDialog();
+        }
+
+        public void ShowMedicals(int idPrisoner)
+        {
+            FrmMedicals Medicals = new FrmMedicals(this, prisonerRepository, idPrisoner);
+            prisonerRepository.Attach(Medicals);
+            Medicals.ShowDialog();
+            prisonerRepository.Delete(Medicals);
+        }
+
+        public void ShowEvaluations(int idPrisoner)
+        {
+            FrmEvaluations Evaluations = new FrmEvaluations(this, prisonerRepository, idPrisoner);
+            prisonerRepository.Attach(Evaluations);
+            Evaluations.ShowDialog();
+            prisonerRepository.Delete(Evaluations);
+        }
+
+        public void ShowChangeAssignment(int idPrisoner)
+        {
+            FrmChangeAssignment ChangeAssignment = new FrmChangeAssignment(this, prisonerRepository, assignmentRepository, idPrisoner);
+            ChangeAssignment.ShowDialog();
         }
     }
 }

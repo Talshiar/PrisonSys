@@ -69,6 +69,12 @@
     <Compile Include="Forms\FrmAddPrisoner.Designer.cs">
       <DependentUpon>FrmAddPrisoner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmAddSupervisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAddSupervisor.Designer.cs">
+      <DependentUpon>FrmAddSupervisor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmAssignmentTypeManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,29 +87,29 @@
     <Compile Include="Forms\FrmCellPicker.Designer.cs">
       <DependentUpon>FrmCellPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmCellStatus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmCellStatus.Designer.cs">
-      <DependentUpon>FrmCellStatus.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmCellblockTypeManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmCellblockTypeManager.Designer.cs">
       <DependentUpon>FrmCellblockTypeManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmEmployees.cs">
+    <Compile Include="Forms\FrmChangeAssignment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmEmployees.Designer.cs">
-      <DependentUpon>FrmEmployees.cs</DependentUpon>
+    <Compile Include="Forms\FrmChangeAssignment.Designer.cs">
+      <DependentUpon>FrmChangeAssignment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmPrisonerHistory.cs">
+    <Compile Include="Forms\FrmEvaluations.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmPrisonerHistory.Designer.cs">
-      <DependentUpon>FrmPrisonerHistory.cs</DependentUpon>
+    <Compile Include="Forms\FrmEvaluations.Designer.cs">
+      <DependentUpon>FrmEvaluations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMedicals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMedicals.Designer.cs">
+      <DependentUpon>FrmMedicals.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmPrisonerManager.cs">
       <SubType>Form</SubType>
@@ -133,23 +139,26 @@
     <EmbeddedResource Include="Forms\FrmAddPrisoner.resx">
       <DependentUpon>FrmAddPrisoner.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAddSupervisor.resx">
+      <DependentUpon>FrmAddSupervisor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAssignmentTypeManager.resx">
       <DependentUpon>FrmAssignmentTypeManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmCellPicker.resx">
       <DependentUpon>FrmCellPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmCellStatus.resx">
-      <DependentUpon>FrmCellStatus.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmCellblockTypeManager.resx">
       <DependentUpon>FrmCellblockTypeManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmEmployees.resx">
-      <DependentUpon>FrmEmployees.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmChangeAssignment.resx">
+      <DependentUpon>FrmChangeAssignment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmPrisonerHistory.resx">
-      <DependentUpon>FrmPrisonerHistory.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmEvaluations.resx">
+      <DependentUpon>FrmEvaluations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMedicals.resx">
+      <DependentUpon>FrmMedicals.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPrisonerManager.resx">
       <DependentUpon>FrmPrisonerManager.cs</DependentUpon>
@@ -198,9 +207,7 @@
       <Name>PrisonSys.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

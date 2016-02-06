@@ -78,7 +78,12 @@ namespace PrisonSys.DAL
             }
             Notify();
         }
-
+        public List<Cell> GetCellList()
+        {
+            LoadCellsFromDatabase();
+            List<Cell> list = cellList.ToList();
+            return list;
+        }
         public void Remove(int id)
         {
             Cell cell = GetCellByIndex(id);

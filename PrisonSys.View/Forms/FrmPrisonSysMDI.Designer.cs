@@ -34,14 +34,10 @@
             this.addPrisonerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managePrisonersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prisonerHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cellStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.employeeListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -53,7 +49,6 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
-            this.viewToolStripMenuItem,
             this.resourcesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -93,36 +88,12 @@
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.prisonerHistoryToolStripMenuItem,
-            this.cellStatusToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "&View";
-            // 
-            // prisonerHistoryToolStripMenuItem
-            // 
-            this.prisonerHistoryToolStripMenuItem.Name = "prisonerHistoryToolStripMenuItem";
-            this.prisonerHistoryToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.prisonerHistoryToolStripMenuItem.Text = "&Prisoner History";
-            this.prisonerHistoryToolStripMenuItem.Click += new System.EventHandler(this.prisonerHistoryToolStripMenuItem_Click);
-            // 
-            // cellStatusToolStripMenuItem
-            // 
-            this.cellStatusToolStripMenuItem.Name = "cellStatusToolStripMenuItem";
-            this.cellStatusToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.cellStatusToolStripMenuItem.Text = "&Cell Status";
-            this.cellStatusToolStripMenuItem.Click += new System.EventHandler(this.cellStatusToolStripMenuItem_Click);
-            // 
             // resourcesToolStripMenuItem
             // 
             this.resourcesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageToolStripMenuItem,
             this.manageToolStripMenuItem1,
-            this.manageToolStripMenuItem2,
-            this.employeeListToolStripMenuItem});
+            this.manageToolStripMenuItem2});
             this.resourcesToolStripMenuItem.Name = "resourcesToolStripMenuItem";
             this.resourcesToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.resourcesToolStripMenuItem.Text = "&Resources";
@@ -147,13 +118,6 @@
             this.manageToolStripMenuItem2.Size = new System.Drawing.Size(217, 22);
             this.manageToolStripMenuItem2.Text = "Manage &Supervisors";
             this.manageToolStripMenuItem2.Click += new System.EventHandler(this.manageToolStripMenuItem2_Click);
-            // 
-            // employeeListToolStripMenuItem
-            // 
-            this.employeeListToolStripMenuItem.Name = "employeeListToolStripMenuItem";
-            this.employeeListToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.employeeListToolStripMenuItem.Text = "&Employee List";
-            this.employeeListToolStripMenuItem.Click += new System.EventHandler(this.employeeListToolStripMenuItem_Click_1);
             // 
             // statusStrip
             // 
@@ -181,7 +145,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FrmPrisonSysMDI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PrisonSysMDI";
+            this.Text = "PrisonSys Application";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -201,14 +165,10 @@
         private System.Windows.Forms.ToolStripMenuItem addPrisonerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem managePrisonersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem prisonerHistoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cellStatusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resourcesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem employeeListToolStripMenuItem;
     }
 }
 

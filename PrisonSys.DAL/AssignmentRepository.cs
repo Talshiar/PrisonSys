@@ -141,23 +141,44 @@ namespace PrisonSys.DAL
 
         public void RemoveSupervisor(int id)
         {
+            LoadSupervisorsFromDatabase();
+            LoadAssignmentsFromDatabase();
             Supervisor supervisor = GetSupervisorByIndex(id);
-
             using (ISession session = NhibernateService.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
+                    foreach(Assignment a in assignmentList)
+                    {
+                        if (a.AssignmentSupervisor.Id == supervisor.Id)
+                        {
+                            session.Delete(a);
+                        }
+                    }
                     session.Delete(supervisor);
                     transaction.Commit();
                 }
             }
             LoadSupervisorsFromDatabase();
+            LoadAssignmentsFromDatabase();
             Notify();
         }
 
         public void AddSupervisor(string fName, string lName)
         {
-            throw new NotImplementedException();
+            LoadSupervisorsFromDatabase();
+            Supervisor superv = new Supervisor(fName, lName);
+
+            using (ISession session = NhibernateService.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Save(superv);
+                    transaction.Commit();
+                }
+            }
+            LoadSupervisorsFromDatabase();
+            Notify();
         }
         #endregion
 

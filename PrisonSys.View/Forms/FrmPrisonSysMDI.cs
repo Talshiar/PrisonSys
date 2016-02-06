@@ -82,15 +82,6 @@ namespace PrisonSys
             controller.ShowPrisonerManager();
         }
 
-        private void prisonerHistoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controller.ShowPrisonerHistory();
-        }
-
-        private void cellStatusToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controller.ShowCellStatus();
-        }
 
         private void manageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -107,9 +98,5 @@ namespace PrisonSys
             controller.ShowSupervisorManager();
         }
 
-        private void employeeListToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            controller.ShowEmployees();
-        }
     }
 }

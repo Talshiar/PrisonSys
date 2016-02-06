@@ -76,8 +76,6 @@
   <ItemGroup>
     <Compile Include="AssignmentRepository.cs" />
     <Compile Include="CellRepository.cs" />
-    <Compile Include="EvaluationRepository.cs" />
-    <Compile Include="MedicalRepository.cs" />
     <Compile Include="NHibernateService.cs" />
     <Compile Include="PrisonerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
