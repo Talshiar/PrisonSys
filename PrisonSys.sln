@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.Model", "PrisonSy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.DAL", "PrisonSys.DAL\PrisonSys.DAL.csproj", "{6D0BC080-822B-441A-B414-9B8D812C228F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.Tests", "PrisonSys.Tests\PrisonSys.Tests.csproj", "{39CD0629-C27B-4B65-831F-6A2DACB47061}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrisonSys.Testing", "PrisonSys.Testing\PrisonSys.Testing.csproj", "{A01EE8BB-133C-4CAE-8E47-274787F6181C}"
 EndProject
 Global
@@ -49,10 +47,6 @@ Global
 		{6D0BC080-822B-441A-B414-9B8D812C228F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D0BC080-822B-441A-B414-9B8D812C228F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D0BC080-822B-441A-B414-9B8D812C228F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39CD0629-C27B-4B65-831F-6A2DACB47061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39CD0629-C27B-4B65-831F-6A2DACB47061}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39CD0629-C27B-4B65-831F-6A2DACB47061}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39CD0629-C27B-4B65-831F-6A2DACB47061}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A01EE8BB-133C-4CAE-8E47-274787F6181C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A01EE8BB-133C-4CAE-8E47-274787F6181C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A01EE8BB-133C-4CAE-8E47-274787F6181C}.Release|Any CPU.ActiveCfg = Release|Any CPU

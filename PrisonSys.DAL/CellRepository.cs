@@ -65,6 +65,7 @@ namespace PrisonSys.DAL
                 if (cell.Id == id)
                 {
                     cell.Pop += change;
+                    if (cell.Pop < 0) cell.Pop = 0;
                     using (ISession session = NhibernateService.OpenSession())
                     {
                         using (ITransaction transaction = session.BeginTransaction())

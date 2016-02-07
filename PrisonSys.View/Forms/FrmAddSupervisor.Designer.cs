@@ -40,7 +40,7 @@
             this.btnAccept.Location = new System.Drawing.Point(119, 132);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
-            this.btnAccept.TabIndex = 0;
+            this.btnAccept.TabIndex = 3;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -59,14 +59,14 @@
             this.textBoxFname.Location = new System.Drawing.Point(94, 23);
             this.textBoxFname.Name = "textBoxFname";
             this.textBoxFname.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFname.TabIndex = 2;
+            this.textBoxFname.TabIndex = 1;
             // 
             // textBoxLname
             // 
             this.textBoxLname.Location = new System.Drawing.Point(94, 59);
             this.textBoxLname.Name = "textBoxLname";
             this.textBoxLname.Size = new System.Drawing.Size(100, 20);
-            this.textBoxLname.TabIndex = 4;
+            this.textBoxLname.TabIndex = 2;
             // 
             // label2
             // 

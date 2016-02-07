@@ -42,14 +42,14 @@
             this.comboBoxSupervisor.Location = new System.Drawing.Point(114, 41);
             this.comboBoxSupervisor.Name = "comboBoxSupervisor";
             this.comboBoxSupervisor.Size = new System.Drawing.Size(158, 21);
-            this.comboBoxSupervisor.TabIndex = 0;
+            this.comboBoxSupervisor.TabIndex = 2;
             // 
             // btnAccept
             // 
             this.btnAccept.Location = new System.Drawing.Point(197, 107);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
-            this.btnAccept.TabIndex = 1;
+            this.btnAccept.TabIndex = 3;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -77,7 +77,7 @@
             this.textBoxName.Location = new System.Drawing.Point(112, 12);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxName.TabIndex = 4;
+            this.textBoxName.TabIndex = 1;
             // 
             // FrmAddAssignment
             // 

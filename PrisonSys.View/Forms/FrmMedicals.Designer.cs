@@ -63,7 +63,7 @@
             this.dateTimePickerEval.Location = new System.Drawing.Point(80, 19);
             this.dateTimePickerEval.Name = "dateTimePickerEval";
             this.dateTimePickerEval.Size = new System.Drawing.Size(210, 20);
-            this.dateTimePickerEval.TabIndex = 4;
+            this.dateTimePickerEval.TabIndex = 2;
             // 
             // label2
             // 
@@ -89,14 +89,14 @@
             this.textBoxDesc.Multiline = true;
             this.textBoxDesc.Name = "textBoxDesc";
             this.textBoxDesc.Size = new System.Drawing.Size(210, 66);
-            this.textBoxDesc.TabIndex = 1;
+            this.textBoxDesc.TabIndex = 3;
             // 
             // btnAddMed
             // 
             this.btnAddMed.Location = new System.Drawing.Point(296, 88);
             this.btnAddMed.Name = "btnAddMed";
             this.btnAddMed.Size = new System.Drawing.Size(75, 23);
-            this.btnAddMed.TabIndex = 0;
+            this.btnAddMed.TabIndex = 4;
             this.btnAddMed.Text = "Add";
             this.btnAddMed.UseVisualStyleBackColor = true;
             this.btnAddMed.Click += new System.EventHandler(this.btnAddMed_Click);

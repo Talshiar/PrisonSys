@@ -38,7 +38,7 @@
             this.btnAccept.Location = new System.Drawing.Point(131, 83);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
-            this.btnAccept.TabIndex = 0;
+            this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -57,7 +57,7 @@
             this.textBoxName.Location = new System.Drawing.Point(106, 20);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxName.TabIndex = 2;
+            this.textBoxName.TabIndex = 1;
             // 
             // FrmAddCellblock
             // 

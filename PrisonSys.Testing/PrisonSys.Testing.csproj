@@ -74,7 +74,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PrisonerRepositoryTest.cs" />
+    <Compile Include="AssignmentTest.cs" />
+    <Compile Include="CellTest.cs" />
+    <Compile Include="PrisonerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

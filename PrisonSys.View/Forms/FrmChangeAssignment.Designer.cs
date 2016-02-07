@@ -40,7 +40,7 @@
             this.comboBoxAssignment.Location = new System.Drawing.Point(12, 48);
             this.comboBoxAssignment.Name = "comboBoxAssignment";
             this.comboBoxAssignment.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxAssignment.TabIndex = 0;
+            this.comboBoxAssignment.TabIndex = 1;
             // 
             // btnAccept
             // 

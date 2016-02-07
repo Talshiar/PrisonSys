@@ -154,6 +154,16 @@ namespace PrisonSys.DAL
                 cellRepo.UpdateCellPop(prisoner.PrisonerCell.Id, -1);
                 using (ITransaction transaction = session.BeginTransaction())
                 {
+                    foreach (Evaluation e in GetEvaluationList())
+                    {
+                        if (e.PrisonerEvaluated.Id == id)
+                            session.Delete(e);
+                    }
+                    foreach (Medical m in GetMedicalList())
+                    {
+                        if (m.PrisonerExamined.Id == id)
+                            session.Delete(m);
+                    }
                     session.Delete(prisoner);
                     transaction.Commit();
                 }
